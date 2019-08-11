@@ -119,6 +119,10 @@
                                                 <constraint firstItem="TEd-W4-Jk1" firstAttribute="top" secondItem="06K-0O-7Nf" secondAttribute="topMargin" constant="11" id="atJ-eO-dIb"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="peopleNextButton" destination="TEd-W4-Jk1" id="WBT-UY-rVf"/>
+                                            <outlet property="peoplePreviousButton" destination="tZF-FL-zn0" id="i4W-9Y-U8O"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

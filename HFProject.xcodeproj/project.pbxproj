@@ -14,6 +14,10 @@
 		93E291712300B05E007983E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 93E2916F2300B05E007983E2 /* LaunchScreen.storyboard */; };
 		93E291792300B27A007983E2 /* PeopleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E291782300B27A007983E2 /* PeopleViewController.swift */; };
 		93E2917B2300B287007983E2 /* PlanetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2917A2300B287007983E2 /* PlanetViewController.swift */; };
+		93E291802300BF6E007983E2 /* PeopleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E2917F2300BF6E007983E2 /* PeopleTableViewCell.swift */; };
+		93E291822300C16E007983E2 /* PeopleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E291812300C16E007983E2 /* PeopleModel.swift */; };
+		93E291852300C316007983E2 /* StarwarsAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E291842300C316007983E2 /* StarwarsAPIClient.swift */; };
+		93EB6C252300CD4F00E79ED2 /* PlanetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EB6C242300CD4F00E79ED2 /* PlanetModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +30,10 @@
 		93E291722300B05E007983E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		93E291782300B27A007983E2 /* PeopleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleViewController.swift; sourceTree = "<group>"; };
 		93E2917A2300B287007983E2 /* PlanetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetViewController.swift; sourceTree = "<group>"; };
+		93E2917F2300BF6E007983E2 /* PeopleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleTableViewCell.swift; sourceTree = "<group>"; };
+		93E291812300C16E007983E2 /* PeopleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleModel.swift; sourceTree = "<group>"; };
+		93E291842300C316007983E2 /* StarwarsAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarwarsAPIClient.swift; sourceTree = "<group>"; };
+		93EB6C242300CD4F00E79ED2 /* PlanetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +70,7 @@
 				93E2917E2300B2CA007983E2 /* Model */,
 				93E2917C2300B29F007983E2 /* Controller */,
 				93E2917D2300B2B4007983E2 /* View */,
+				93E291832300C2AD007983E2 /* External Helpers */,
 				93E2916D2300B05E007983E2 /* Assets.xcassets */,
 				93E2916F2300B05E007983E2 /* LaunchScreen.storyboard */,
 				93E291722300B05E007983E2 /* Info.plist */,
@@ -75,6 +84,7 @@
 			children = (
 				93E291782300B27A007983E2 /* PeopleViewController.swift */,
 				93E2917A2300B287007983E2 /* PlanetViewController.swift */,
+				93E2917F2300BF6E007983E2 /* PeopleTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -90,8 +100,18 @@
 		93E2917E2300B2CA007983E2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				93E291812300C16E007983E2 /* PeopleModel.swift */,
+				93EB6C242300CD4F00E79ED2 /* PlanetModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		93E291832300C2AD007983E2 /* External Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				93E291842300C316007983E2 /* StarwarsAPIClient.swift */,
+			);
+			path = "External Helpers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,9 +185,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93E291852300C316007983E2 /* StarwarsAPIClient.swift in Sources */,
+				93EB6C252300CD4F00E79ED2 /* PlanetModel.swift in Sources */,
+				93E291802300BF6E007983E2 /* PeopleTableViewCell.swift in Sources */,
 				93E2917B2300B287007983E2 /* PlanetViewController.swift in Sources */,
 				93E2916C2300B059007983E2 /* HFProject.xcdatamodeld in Sources */,
 				93E291642300B059007983E2 /* AppDelegate.swift in Sources */,
+				93E291822300C16E007983E2 /* PeopleModel.swift in Sources */,
 				93E291792300B27A007983E2 /* PeopleViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

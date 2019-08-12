@@ -16,8 +16,6 @@ enum NetworkError: Error {
 }
 
 class StarWarsAPIClient {
-    // Result type in Swift 5 in a generic enum used on asychrousnous calls,
-    // the Result is an enum that validates a .success or .failure against the call
     public func searchPeople(apiURL: String, completion: @escaping (Result<PeopleResults, NetworkError>) -> Void) {
         var endPointURL = apiURL
         if endPointURL == "" {
@@ -32,7 +30,6 @@ class StarWarsAPIClient {
             if let error = error {
                 completion(.failure(.APIError(error)))
             } else if let data = data {
-                // TODO: using JSONDecoder() parse data to [Business] DONE
                 do {
                     let peopleResults = try JSONDecoder().decode(PeopleResults.self, from: data)
                     completion(.success(peopleResults))
@@ -43,5 +40,28 @@ class StarWarsAPIClient {
         }
         task.resume()
     }
-    
+    public func searchPlanet(apiURL: String, completion: @escaping (Result<PlanetResults, NetworkError>) -> Void) {
+        var endPointURL = apiURL
+        if endPointURL == "" {
+            endPointURL = "https://swapi.co/api/planets/"
+        }
+        guard let url = URL(string: endPointURL) else {
+            completion(.failure(.badURL))
+            return
+        }
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                completion(.failure(.APIError(error)))
+            } else if let data = data {
+                do {
+                    let planetResults = try JSONDecoder().decode(PlanetResults.self, from: data)
+                    completion(.success(planetResults))
+                } catch {
+                    completion(.failure(.JSONDecodingError(error)))
+                }
+            }
+        }
+        task.resume()
+    }
 }

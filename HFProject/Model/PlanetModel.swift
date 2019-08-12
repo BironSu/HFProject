@@ -7,3 +7,16 @@
 //
 
 import Foundation
+
+struct PlanetResults : Codable {
+    let next : String?
+    let previous: String?
+    let results : [Planets]
+}
+
+struct Planets : Codable {
+    let name : String
+    let climate : String
+    let population : String
+    let created : String
+}

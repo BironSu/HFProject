@@ -18,6 +18,7 @@ class PeopleViewController: UIViewController {
             }
         }
     }
+    // Detecting if links have value to enable buttons to change value of people array by calling the APIClient to fetch data from another URL
     private var previousLink = String()
     private var nextLink = String()
     private let apiClient = StarWarsAPIClient()
@@ -27,6 +28,7 @@ class PeopleViewController: UIViewController {
         peopleTableView.delegate = self
         callAPIClient(input: "")
     }
+    // A function to get the people data as well as previous and next link
     private func callAPIClient(input: String) {
         apiClient.searchPeople(apiURL: input) { result in
             switch result {
@@ -39,6 +41,7 @@ class PeopleViewController: UIViewController {
             }
         }
     }
+    // functions for the UIButton to call when button is tapped
     @objc private func previousButton() {
         callAPIClient(input: self.previousLink)
     }
@@ -56,11 +59,11 @@ extension PeopleViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row < people.count {
             guard let cell = peopleTableView.dequeueReusableCell(withIdentifier: "PeopleCell", for: indexPath) as? PeopleTableViewCell else { return PeopleTableViewCell()}
             let cellToSet = people[indexPath.row]
-            cell.peopleNameLabel.text = cellToSet.name
-            cell.peopleEyeColorLabel.text = cellToSet.eye_color
-            cell.peopleHairColorLabel.text = cellToSet.hair_color
-            cell.peopleBirthYearLabel.text = cellToSet.birth_year
-            cell.peopleDateCreatedLabel.text = cellToSet.created
+            cell.peopleNameLabel.text = ("Name: \(cellToSet.name)")
+            cell.peopleEyeColorLabel.text = ("Eye Color: \(cellToSet.eye_color.capitalized)")
+            cell.peopleHairColorLabel.text = ("Hair Color: \(cellToSet.hair_color.capitalized)")
+            cell.peopleBirthYearLabel.text = ("DOB: \(cellToSet.birth_year)")
+            cell.peopleDateCreatedLabel.text = ("Date Created: \(cellToSet.created)")
             return cell
         } else {
             guard let cell = peopleTableView.dequeueReusableCell(withIdentifier: "PeopleNavCell", for: indexPath) as? PeopleTableViewCell else { return PeopleTableViewCell()}
@@ -84,6 +87,6 @@ extension PeopleViewController: UITableViewDataSource, UITableViewDelegate {
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 200
+            return 230
     }
 }

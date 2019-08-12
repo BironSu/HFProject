@@ -18,6 +18,7 @@
 		93E291822300C16E007983E2 /* PeopleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E291812300C16E007983E2 /* PeopleModel.swift */; };
 		93E291852300C316007983E2 /* StarwarsAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E291842300C316007983E2 /* StarwarsAPIClient.swift */; };
 		93EB6C252300CD4F00E79ED2 /* PlanetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EB6C242300CD4F00E79ED2 /* PlanetModel.swift */; };
+		93EB6C2723012AF200E79ED2 /* PlanetsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EB6C2623012AF200E79ED2 /* PlanetsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		93E291812300C16E007983E2 /* PeopleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleModel.swift; sourceTree = "<group>"; };
 		93E291842300C316007983E2 /* StarwarsAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarwarsAPIClient.swift; sourceTree = "<group>"; };
 		93EB6C242300CD4F00E79ED2 /* PlanetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetModel.swift; sourceTree = "<group>"; };
+		93EB6C2623012AF200E79ED2 /* PlanetsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				93E291782300B27A007983E2 /* PeopleViewController.swift */,
 				93E2917A2300B287007983E2 /* PlanetViewController.swift */,
 				93E2917F2300BF6E007983E2 /* PeopleTableViewCell.swift */,
+				93EB6C2623012AF200E79ED2 /* PlanetsTableViewCell.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 				93E291802300BF6E007983E2 /* PeopleTableViewCell.swift in Sources */,
 				93E2917B2300B287007983E2 /* PlanetViewController.swift in Sources */,
 				93E2916C2300B059007983E2 /* HFProject.xcdatamodeld in Sources */,
+				93EB6C2723012AF200E79ED2 /* PlanetsTableViewCell.swift in Sources */,
 				93E291642300B059007983E2 /* AppDelegate.swift in Sources */,
 				93E291822300C16E007983E2 /* PeopleModel.swift in Sources */,
 				93E291792300B27A007983E2 /* PeopleViewController.swift in Sources */,

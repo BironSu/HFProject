@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PlanetViewController: UIViewController {
 
@@ -22,11 +23,14 @@ class PlanetViewController: UIViewController {
     private var previousLink = String()
     private var nextLink = String()
     private let apiClient = StarWarsAPIClient()
+    var player = AVAudioPlayer()
     let dateFormatterGet = DateFormatter()
     let dateFormatterPrint = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Planets"
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "StarsBackground.jpg")!)
+        self.planetsTableView.backgroundColor = .clear
         //Formatting the date to show Year-Month-Day (Hour:Minute:Seconds)
         dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
         dateFormatterPrint.dateFormat = "yyyy-MM-dd (HH:mm:ss)"
@@ -34,6 +38,16 @@ class PlanetViewController: UIViewController {
         planetsTableView.delegate = self
         //Loads first page
         callAPIClient(input: "")
+    }
+    // Function to play sound
+    func PlaySound() {
+        do {
+            let audioPath = Bundle.main.path(forResource: "LightsaberSwing", ofType: "wav")
+            try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!) as URL)
+        } catch {
+            print("Error !")
+        }
+        player.play()
     }
     // A function to get the planets data
     private func callAPIClient(input: String) {
@@ -71,6 +85,12 @@ extension PlanetViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             cell.planetsCreatedLabel.text = "N/A"
         }
+        // Editing the looks of each label in every cell with a UILabel Extension
+        cell.backgroundColor = .clear
+        cell.planetsNameLabel.customize()
+        cell.planetsClimateLabel.customize()
+        cell.planetsPopulationLabel.customize()
+        cell.planetsCreatedLabel.customize()
         return cell
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -78,6 +98,9 @@ extension PlanetViewController: UITableViewDataSource, UITableViewDelegate {
         if indexPath.row == planets.count - 1 && nextLink != "null" {
             nextResult()
         }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        PlaySound()
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 150

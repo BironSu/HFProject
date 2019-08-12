@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class PeopleViewController: UIViewController {
 
@@ -24,9 +25,12 @@ class PeopleViewController: UIViewController {
     private let apiClient = StarWarsAPIClient()
     let dateFormatterGet = DateFormatter()
     let dateFormatterPrint = DateFormatter()
+    var player = AVAudioPlayer()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "People"
+        self.peopleTableView.backgroundColor = .clear
+        self.view.backgroundColor = UIColor(patternImage: UIImage(named: "StarsBackground.jpg")!)
         //Formatting the date to show Year-Month-Day (Hour:Minute:Seconds)
         dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
         dateFormatterPrint.dateFormat = "yyyy-MM-dd (HH:mm:ss)"
@@ -34,6 +38,16 @@ class PeopleViewController: UIViewController {
         peopleTableView.delegate = self
         //Loads first page
         callAPIClient(input: "")
+    }
+    // function to play sound
+    func PlaySound() {
+        do {
+            let audioPath = Bundle.main.path(forResource: "LightsaberSwing", ofType: "wav")
+            try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!) as URL)
+        } catch {
+            print("Error !")
+        }
+        player.play()
     }
     // A function to get the people data as well as previous and next link
     private func callAPIClient(input: String) {
@@ -66,8 +80,6 @@ extension PeopleViewController: UITableViewDataSource, UITableViewDelegate {
         guard let cell = peopleTableView.dequeueReusableCell(withIdentifier: "PeopleCell", for: indexPath) as? PeopleTableViewCell else { return PeopleTableViewCell()}
         let cellToSet = people[indexPath.row]
         cell.peopleNameLabel.text = ("Name: \(cellToSet.name)")
-        cell.peopleNameLabel.backgroundColor = #colorLiteral(red: 0.6000000238, green: 0.6000000238, blue: 0.6000000238, alpha: 1)
-
         cell.peopleEyeColorLabel.text = ("Eye Color: \(cellToSet.eye_color.capitalized)")
         cell.peopleHairColorLabel.text = ("Hair Color: \(cellToSet.hair_color.capitalized)")
         cell.peopleBirthYearLabel.text = ("DOB: \(cellToSet.birth_year)")
@@ -77,7 +89,18 @@ extension PeopleViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             cell.peopleDateCreatedLabel.text = "N/A"
         }
+        // Editing the looks of each label in every cell with a UILabel Extension
+        cell.peopleNameLabel.customize()
+        cell.peopleEyeColorLabel.customize()
+        cell.peopleHairColorLabel.customize()
+        cell.peopleBirthYearLabel.customize()
+        cell.peopleDateCreatedLabel.customize()
+        cell.backgroundColor = .clear
+
         return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        PlaySound()
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         // Infinite scrolling, if it is the last row and next link is available it will call the api client using the next link.

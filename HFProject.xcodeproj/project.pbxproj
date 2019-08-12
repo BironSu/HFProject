@@ -19,6 +19,9 @@
 		93E291852300C316007983E2 /* StarwarsAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93E291842300C316007983E2 /* StarwarsAPIClient.swift */; };
 		93EB6C252300CD4F00E79ED2 /* PlanetModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EB6C242300CD4F00E79ED2 /* PlanetModel.swift */; };
 		93EB6C2723012AF200E79ED2 /* PlanetsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EB6C2623012AF200E79ED2 /* PlanetsTableViewCell.swift */; };
+		93EB6C29230216F100E79ED2 /* UILabel + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93EB6C28230216F100E79ED2 /* UILabel + Extension.swift */; };
+		93EB6C2B23021FA600E79ED2 /* SWICON.png in Resources */ = {isa = PBXBuildFile; fileRef = 93EB6C2A23021FA600E79ED2 /* SWICON.png */; };
+		93EB6C2F23022D6B00E79ED2 /* LightsaberSwing.wav in Resources */ = {isa = PBXBuildFile; fileRef = 93EB6C2E23022D6A00E79ED2 /* LightsaberSwing.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		93E291842300C316007983E2 /* StarwarsAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarwarsAPIClient.swift; sourceTree = "<group>"; };
 		93EB6C242300CD4F00E79ED2 /* PlanetModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetModel.swift; sourceTree = "<group>"; };
 		93EB6C2623012AF200E79ED2 /* PlanetsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsTableViewCell.swift; sourceTree = "<group>"; };
+		93EB6C28230216F100E79ED2 /* UILabel + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel + Extension.swift"; sourceTree = "<group>"; };
+		93EB6C2A23021FA600E79ED2 /* SWICON.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = SWICON.png; path = ../../../../Downloads/SWICON.png; sourceTree = "<group>"; };
+		93EB6C2E23022D6A00E79ED2 /* LightsaberSwing.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = LightsaberSwing.wav; path = ../../../../../Downloads/Sounds/LightsaberSwing.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,9 +79,11 @@
 				93E2917C2300B29F007983E2 /* Controller */,
 				93E2917D2300B2B4007983E2 /* View */,
 				93E291832300C2AD007983E2 /* External Helpers */,
+				93EB6C2C23022D2500E79ED2 /* Supporting files */,
 				93E2916D2300B05E007983E2 /* Assets.xcassets */,
 				93E2916F2300B05E007983E2 /* LaunchScreen.storyboard */,
 				93E291722300B05E007983E2 /* Info.plist */,
+				93EB6C2A23021FA600E79ED2 /* SWICON.png */,
 				93E2916A2300B059007983E2 /* HFProject.xcdatamodeld */,
 			);
 			path = HFProject;
@@ -115,6 +123,15 @@
 				93E291842300C316007983E2 /* StarwarsAPIClient.swift */,
 			);
 			path = "External Helpers";
+			sourceTree = "<group>";
+		};
+		93EB6C2C23022D2500E79ED2 /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				93EB6C28230216F100E79ED2 /* UILabel + Extension.swift */,
+				93EB6C2E23022D6A00E79ED2 /* LightsaberSwing.wav */,
+			);
+			path = "Supporting files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,8 +192,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93EB6C2B23021FA600E79ED2 /* SWICON.png in Resources */,
 				93E291712300B05E007983E2 /* LaunchScreen.storyboard in Resources */,
 				93E2916E2300B05E007983E2 /* Assets.xcassets in Resources */,
+				93EB6C2F23022D6B00E79ED2 /* LightsaberSwing.wav in Resources */,
 				93E291692300B059007983E2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -194,6 +213,7 @@
 				93E2917B2300B287007983E2 /* PlanetViewController.swift in Sources */,
 				93E2916C2300B059007983E2 /* HFProject.xcdatamodeld in Sources */,
 				93EB6C2723012AF200E79ED2 /* PlanetsTableViewCell.swift in Sources */,
+				93EB6C29230216F100E79ED2 /* UILabel + Extension.swift in Sources */,
 				93E291642300B059007983E2 /* AppDelegate.swift in Sources */,
 				93E291822300C16E007983E2 /* PeopleModel.swift in Sources */,
 				93E291792300B27A007983E2 /* PeopleViewController.swift in Sources */,

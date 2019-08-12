@@ -194,11 +194,11 @@
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="833.70535714285711"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--People-->
         <scene sceneID="9ag-Wl-oSh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T0C-xC-FEL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" id="x5f-hX-Q9Z"/>
+                    <tabBarItem key="tabBarItem" title="People" image="starwars" id="x5f-hX-Q9Z"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cQ7-PQ-0W3">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -232,11 +232,11 @@
             </objects>
             <point key="canvasLocation" x="14" y="415"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Planets-->
         <scene sceneID="jiI-FF-hqX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KbL-ex-nfl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" id="Mq0-i8-jHC"/>
+                    <tabBarItem key="tabBarItem" title="Planets" image="planet" id="Mq0-i8-jHC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J1b-yH-Fy1">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -252,4 +252,8 @@
             <point key="canvasLocation" x="903" y="835"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="planet" width="32" height="32"/>
+        <image name="starwars" width="64" height="64"/>
+    </resources>
 </document>

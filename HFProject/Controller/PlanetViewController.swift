@@ -27,13 +27,15 @@ class PlanetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Planets"
+        //Formatting the date to show Year-Month-Day (Hour:Minute:Seconds)
         dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
         dateFormatterPrint.dateFormat = "yyyy-MM-dd (HH:mm:ss)"
         planetsTableView.dataSource = self
         planetsTableView.delegate = self
+        //Loads first page
         callAPIClient(input: "")
     }
-    // A function to get the people data as well as previous and next link
+    // A function to get the planets data
     private func callAPIClient(input: String) {
         apiClient.searchPlanet(apiURL: input) { result in
             switch result {
@@ -63,6 +65,7 @@ extension PlanetViewController: UITableViewDataSource, UITableViewDelegate {
         cell.planetsNameLabel.text = ("Name: \(cellToSet.name.capitalized)")
         cell.planetsClimateLabel.text = ("Climate: \(cellToSet.climate.capitalized)")
         cell.planetsPopulationLabel.text = ("Population: \(cellToSet.population)")
+        // formatting the date here to display a cleaner date format
         if let date = dateFormatterGet.date(from: cellToSet.created) {
             cell.planetsCreatedLabel.text = ("Date Created: \(dateFormatterPrint.string(from: date))")
         } else {
@@ -71,6 +74,7 @@ extension PlanetViewController: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // Infinite scrolling, if it is the last row and next link is available it will call the api client using the next link.
         if indexPath.row == planets.count - 1 && nextLink != "null" {
             nextResult()
         }

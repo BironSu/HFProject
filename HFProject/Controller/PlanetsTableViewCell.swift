@@ -14,8 +14,6 @@ class PlanetsTableViewCell: UITableViewCell {
     @IBOutlet weak var planetsClimateLabel: UILabel!
     @IBOutlet weak var planetsPopulationLabel: UILabel!
     @IBOutlet weak var planetsCreatedLabel: UILabel!
-    @IBOutlet weak var planetsPreviousButton: UIButton!
-    @IBOutlet weak var planetsNextButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
     }

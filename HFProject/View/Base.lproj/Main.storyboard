@@ -86,45 +86,6 @@
                                             <outlet property="peopleNameLabel" destination="SK5-pQ-j7A" id="pDO-Zb-9at"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PeopleNavCell" rowHeight="156" id="EsJ-cC-rF2" customClass="PeopleTableViewCell" customModule="HFProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="255" width="414" height="156"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="EsJ-cC-rF2" id="06K-0O-7Nf">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="155.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tZF-FL-zn0">
-                                                    <rect key="frame" x="31" y="22" width="100" height="100"/>
-                                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Pp2-j2-3mL"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Previous"/>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TEd-W4-Jk1">
-                                                    <rect key="frame" x="283" y="22" width="100" height="100"/>
-                                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="yjN-PG-qeh"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Next"/>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="TEd-W4-Jk1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tZF-FL-zn0" secondAttribute="trailing" constant="8" symbolic="YES" id="1LT-fk-Bbu"/>
-                                                <constraint firstItem="TEd-W4-Jk1" firstAttribute="top" secondItem="tZF-FL-zn0" secondAttribute="top" id="BrN-8q-bv1"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="TEd-W4-Jk1" secondAttribute="trailing" constant="11" id="XKa-SI-m9P"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="tZF-FL-zn0" secondAttribute="bottom" constant="23" id="e3P-Y0-9MI"/>
-                                                <constraint firstItem="TEd-W4-Jk1" firstAttribute="firstBaseline" secondItem="tZF-FL-zn0" secondAttribute="baseline" id="gn8-dD-1bE"/>
-                                                <constraint firstItem="TEd-W4-Jk1" firstAttribute="top" secondItem="06K-0O-7Nf" secondAttribute="topMargin" constant="11" id="rX3-BG-pb7"/>
-                                                <constraint firstItem="tZF-FL-zn0" firstAttribute="leading" secondItem="06K-0O-7Nf" secondAttribute="leadingMargin" constant="11" id="v9k-aN-1aU"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="peopleNextButton" destination="TEd-W4-Jk1" id="WBT-UY-rVf"/>
-                                            <outlet property="peoplePreviousButton" destination="tZF-FL-zn0" id="i4W-9Y-U8O"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
@@ -212,45 +173,6 @@
                                             <outlet property="planetsPopulationLabel" destination="Jes-FB-Epo" id="aGZ-WL-eJW"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PlanetNavCell" rowHeight="165" id="8SK-ue-SAp" customClass="PlanetsTableViewCell" customModule="HFProject" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="222" width="414" height="165"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8SK-ue-SAp" id="Rkp-ca-AjB">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="164.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d51-ru-WA4">
-                                                    <rect key="frame" x="31" y="22" width="100" height="100"/>
-                                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="Sd9-4Y-3Pr"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Previous"/>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vca-2R-nu0">
-                                                    <rect key="frame" x="283" y="22" width="100" height="100"/>
-                                                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="T2v-Bp-h1X"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Next"/>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="d51-ru-WA4" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Rkp-ca-AjB" secondAttribute="leadingMargin" id="Vfv-ye-E74"/>
-                                                <constraint firstItem="Vca-2R-nu0" firstAttribute="firstBaseline" secondItem="d51-ru-WA4" secondAttribute="baseline" id="Xhh-nv-gGA"/>
-                                                <constraint firstItem="Vca-2R-nu0" firstAttribute="leading" secondItem="d51-ru-WA4" secondAttribute="trailing" constant="152" id="czK-kt-fAu"/>
-                                                <constraint firstItem="Vca-2R-nu0" firstAttribute="top" secondItem="d51-ru-WA4" secondAttribute="top" id="fMa-KL-6hG"/>
-                                                <constraint firstItem="Vca-2R-nu0" firstAttribute="top" secondItem="Rkp-ca-AjB" secondAttribute="topMargin" constant="11" id="ihT-K9-NUB"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Vca-2R-nu0" secondAttribute="trailing" constant="11" id="mEW-4k-70j"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="d51-ru-WA4" secondAttribute="bottom" constant="32" id="vK1-h6-u8z"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="planetsNextButton" destination="Vca-2R-nu0" id="gNL-nz-3Yx"/>
-                                            <outlet property="planetsPreviousButton" destination="d51-ru-WA4" id="Z9k-2X-Xag"/>
-                                        </connections>
-                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
@@ -272,11 +194,11 @@
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="833.70535714285711"/>
         </scene>
-        <!--People-->
+        <!--Navigation Controller-->
         <scene sceneID="9ag-Wl-oSh">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="T0C-xC-FEL" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="People" id="x5f-hX-Q9Z"/>
+                    <tabBarItem key="tabBarItem" id="x5f-hX-Q9Z"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cQ7-PQ-0W3">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -310,11 +232,11 @@
             </objects>
             <point key="canvasLocation" x="14" y="415"/>
         </scene>
-        <!--Planet-->
+        <!--Navigation Controller-->
         <scene sceneID="jiI-FF-hqX">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KbL-ex-nfl" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Planet" id="Mq0-i8-jHC"/>
+                    <tabBarItem key="tabBarItem" id="Mq0-i8-jHC"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="J1b-yH-Fy1">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

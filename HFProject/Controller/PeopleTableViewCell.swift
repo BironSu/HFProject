@@ -15,8 +15,6 @@ class PeopleTableViewCell: UITableViewCell {
     @IBOutlet weak var peopleEyeColorLabel: UILabel!
     @IBOutlet weak var peopleBirthYearLabel: UILabel!
     @IBOutlet weak var peopleDateCreatedLabel: UILabel!
-    @IBOutlet weak var peoplePreviousButton: UIButton!
-    @IBOutlet weak var peopleNextButton: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

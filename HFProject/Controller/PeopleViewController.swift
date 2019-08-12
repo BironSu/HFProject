@@ -22,8 +22,13 @@ class PeopleViewController: UIViewController {
     private var previousLink = String()
     private var nextLink = String()
     private let apiClient = StarWarsAPIClient()
+    let dateFormatterGet = DateFormatter()
+    let dateFormatterPrint = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "People"
+        dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
+        dateFormatterPrint.dateFormat = "yyyy-MM-dd (HH:mm:ss)"
         peopleTableView.dataSource = self
         peopleTableView.delegate = self
         callAPIClient(input: "")
@@ -35,58 +40,46 @@ class PeopleViewController: UIViewController {
             case .failure(let error):
                 print("error: \(error)")
             case .success(let data):
-                self.people = data.results
+                self.people += data.results
                 self.previousLink = data.previous ?? "null"
                 self.nextLink = data.next ?? "null"
             }
         }
     }
-    // functions for the UIButton to call when button is tapped
-    @objc private func previousButton() {
+    // functions for the tableview to call when requirement is met
+    @objc private func previousResult() {
         callAPIClient(input: self.previousLink)
     }
-    @objc private func nextButton() {
+    @objc private func nextResult() {
         callAPIClient(input: self.nextLink)
     }
 }
 
 extension PeopleViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return people.count + 1
+        return people.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row < people.count {
-            guard let cell = peopleTableView.dequeueReusableCell(withIdentifier: "PeopleCell", for: indexPath) as? PeopleTableViewCell else { return PeopleTableViewCell()}
-            let cellToSet = people[indexPath.row]
-            cell.peopleNameLabel.text = ("Name: \(cellToSet.name)")
-            cell.peopleEyeColorLabel.text = ("Eye Color: \(cellToSet.eye_color.capitalized)")
-            cell.peopleHairColorLabel.text = ("Hair Color: \(cellToSet.hair_color.capitalized)")
-            cell.peopleBirthYearLabel.text = ("DOB: \(cellToSet.birth_year)")
-            cell.peopleDateCreatedLabel.text = ("Date Created: \(cellToSet.created)")
-            return cell
+        guard let cell = peopleTableView.dequeueReusableCell(withIdentifier: "PeopleCell", for: indexPath) as? PeopleTableViewCell else { return PeopleTableViewCell()}
+        let cellToSet = people[indexPath.row]
+        cell.peopleNameLabel.text = ("Name: \(cellToSet.name)")
+        cell.peopleEyeColorLabel.text = ("Eye Color: \(cellToSet.eye_color.capitalized)")
+        cell.peopleHairColorLabel.text = ("Hair Color: \(cellToSet.hair_color.capitalized)")
+        cell.peopleBirthYearLabel.text = ("DOB: \(cellToSet.birth_year)")
+        if let date = dateFormatterGet.date(from: cellToSet.created) {
+            cell.peopleDateCreatedLabel.text = ("Date Created: \(dateFormatterPrint.string(from: date))")
         } else {
-            guard let cell = peopleTableView.dequeueReusableCell(withIdentifier: "PeopleNavCell", for: indexPath) as? PeopleTableViewCell else { return PeopleTableViewCell()}
-            if self.previousLink != "null" {
-                cell.peoplePreviousButton.isEnabled = true
-                cell.peoplePreviousButton.isHidden = false
-                cell.peoplePreviousButton.addTarget(self, action: #selector(previousButton), for: .touchUpInside)
-            } else {
-                cell.peoplePreviousButton.isEnabled = false
-                cell.peoplePreviousButton.isHidden = true
-            }
-            if self.nextLink != "null" {
-                cell.peopleNextButton.isEnabled = true
-                cell.peopleNextButton.isHidden = false
-                cell.peopleNextButton.addTarget(self, action: #selector(nextButton), for: .touchUpInside)
-            } else {
-                cell.peopleNextButton.isEnabled = false
-                cell.peopleNextButton.isHidden = true
-            }
-            return cell
+            cell.peopleDateCreatedLabel.text = "N/A"
+        }
+        return cell
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == people.count - 1 && nextLink != "null" {
+            nextResult()
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 230
+        return 180
     }
 }

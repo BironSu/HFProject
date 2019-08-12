@@ -18,12 +18,17 @@ class PlanetViewController: UIViewController {
             }
         }
     }
-    // Detecting if links have value to enable buttons to change value of people array by calling the APIClient to fetch data from another URL
+    // Detecting if links have value to enable buttons to change value of planets array by calling the APIClient to fetch data from another URL
     private var previousLink = String()
     private var nextLink = String()
     private let apiClient = StarWarsAPIClient()
+    let dateFormatterGet = DateFormatter()
+    let dateFormatterPrint = DateFormatter()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Planets"
+        dateFormatterGet.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
+        dateFormatterPrint.dateFormat = "yyyy-MM-dd (HH:mm:ss)"
         planetsTableView.dataSource = self
         planetsTableView.delegate = self
         callAPIClient(input: "")
@@ -35,57 +40,42 @@ class PlanetViewController: UIViewController {
             case .failure(let error):
                 print("error: \(error)")
             case .success(let data):
-                self.planets = data.results
+                self.planets += data.results
                 self.previousLink = data.previous ?? "null"
                 self.nextLink = data.next ?? "null"
             }
         }
     }
-    // functions for the UIButton to call when button is tapped
-    @objc private func previousButton() {
-        callAPIClient(input: self.previousLink)
-    }
-    @objc private func nextButton() {
+    // functions for the infinite scrolling
+    @objc private func nextResult() {
         callAPIClient(input: self.nextLink)
     }
 }
 
 extension PlanetViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return planets.count + 1
+        return planets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row < planets.count {
-            guard let cell = planetsTableView.dequeueReusableCell(withIdentifier: "PlanetCell", for: indexPath) as? PlanetsTableViewCell else { return PlanetsTableViewCell()}
-            let cellToSet = planets[indexPath.row]
-            cell.planetsNameLabel.text = ("Name: \(cellToSet.name.capitalized)")
-            cell.planetsClimateLabel.text = ("Climate: \(cellToSet.climate.capitalized)")
-            cell.planetsPopulationLabel.text = ("Population: \(cellToSet.population)")
-            cell.planetsCreatedLabel.text = ("Date: \(cellToSet.created)")
-            return cell
+        guard let cell = planetsTableView.dequeueReusableCell(withIdentifier: "PlanetCell", for: indexPath) as? PlanetsTableViewCell else { return PlanetsTableViewCell()}
+        let cellToSet = planets[indexPath.row]
+        cell.planetsNameLabel.text = ("Name: \(cellToSet.name.capitalized)")
+        cell.planetsClimateLabel.text = ("Climate: \(cellToSet.climate.capitalized)")
+        cell.planetsPopulationLabel.text = ("Population: \(cellToSet.population)")
+        if let date = dateFormatterGet.date(from: cellToSet.created) {
+            cell.planetsCreatedLabel.text = ("Date Created: \(dateFormatterPrint.string(from: date))")
         } else {
-            guard let cell = planetsTableView.dequeueReusableCell(withIdentifier: "PlanetNavCell", for: indexPath) as? PlanetsTableViewCell else { return PlanetsTableViewCell()}
-            if self.previousLink != "null" {
-                cell.planetsPreviousButton.isEnabled = true
-                cell.planetsPreviousButton.isHidden = false
-                cell.planetsPreviousButton.addTarget(self, action: #selector(previousButton), for: .touchUpInside)
-            } else {
-                cell.planetsPreviousButton.isEnabled = false
-                cell.planetsPreviousButton.isHidden = true
-            }
-            if self.nextLink != "null" {
-                cell.planetsNextButton.isEnabled = true
-                cell.planetsNextButton.isHidden = false
-                cell.planetsNextButton.addTarget(self, action: #selector(nextButton), for: .touchUpInside)
-            } else {
-                cell.planetsNextButton.isEnabled = false
-                cell.planetsNextButton.isHidden = true
-            }
-            return cell
+            cell.planetsCreatedLabel.text = "N/A"
+        }
+        return cell
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == planets.count - 1 && nextLink != "null" {
+            nextResult()
         }
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 230
+        return 150
     }
 }

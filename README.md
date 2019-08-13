@@ -27,7 +27,7 @@ After cloning/downloading HFProject, tap HFProject with the Star Wars logo to op
 The first thing you see will be the list of people, scroll down or up to see the entire list. 
 Tap the bottom right icon labeled 'Planets' to see the list of planets which also allows you to scroll down or up to browse all the planets from Star Wars. 
 To disable the background sound you can tap the Pause button on the top left. 
-Tapping on each cell also plays a lightsaber audio, it sounds a lot better with the background audio going on!
+Tapping on each cell also plays lightsaber audio, it sounds a lot better with the background audio going on!
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details

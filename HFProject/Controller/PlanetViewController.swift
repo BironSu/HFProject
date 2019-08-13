@@ -26,6 +26,9 @@ class PlanetViewController: UIViewController {
     var player = AVAudioPlayer()
     let dateFormatterGet = DateFormatter()
     let dateFormatterPrint = DateFormatter()
+    var tapPlayer = AVAudioPlayer()
+    var playerPause = false
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Planets"
@@ -38,6 +41,17 @@ class PlanetViewController: UIViewController {
         planetsTableView.delegate = self
         //Loads first page
         callAPIClient(input: "")
+        self.addSongButton()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.playerPause = false
+        self.navigationItem.rightBarButtonItem?.title = "Pause"
+        self.playTheme()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.playerPause = true
+        self.navigationItem.rightBarButtonItem?.title = "Play"
+        self.playTheme()
     }
     // Function to play sound
     func PlaySound() {
@@ -48,6 +62,35 @@ class PlanetViewController: UIViewController {
             print("Error !")
         }
         player.play()
+    }
+    func addSongButton() {
+        let play = UIBarButtonItem(title: "Pause", style: .plain, target: self, action: #selector(playTapped))
+        navigationItem.rightBarButtonItem = play
+    }
+    @objc func playTapped(_ sender: UIBarButtonItem) {
+        if sender.title == "Play" {
+            playTheme()
+            sender.title = "Pause"
+        } else {
+            playTheme()
+            sender.title = "Play"
+        }
+    }
+    func playTheme() {
+        if playerPause == false {
+            do {
+                let audioPath = Bundle.main.path(forResource: "SWBattleTheme", ofType: "mp3")
+                try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!) as URL)
+                player.volume = 0.25
+            } catch {
+                print("Error !")
+            }
+            player.play()
+            playerPause = true
+        } else {
+            playerPause = false
+            player.pause()
+        }
     }
     // A function to get the planets data
     private func callAPIClient(input: String) {

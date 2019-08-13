@@ -41,6 +41,15 @@ class PeopleViewController: UIViewController {
         //Loads first page
         callAPIClient(input: "")
         self.addSongButton()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        self.playerPause = false
+        self.navigationItem.rightBarButtonItem?.title = "Pause"
+        self.playTheme()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        self.playerPause = true
+        self.navigationItem.rightBarButtonItem?.title = "Play"
         self.playTheme()
     }
     // function to play sound
@@ -96,9 +105,6 @@ class PeopleViewController: UIViewController {
         }
     }
     // functions for the tableview to call when requirement is met
-    @objc private func previousResult() {
-        callAPIClient(input: self.previousLink)
-    }
     @objc private func nextResult() {
         callAPIClient(input: self.nextLink)
     }

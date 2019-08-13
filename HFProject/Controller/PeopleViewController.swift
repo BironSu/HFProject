@@ -20,7 +20,6 @@ class PeopleViewController: UIViewController {
         }
     }
     // Detecting if links have value to enable buttons to change value of people array by calling the APIClient to fetch data from another URL
-    private var previousLink = String()
     private var nextLink = String()
     private let apiClient = StarWarsAPIClient()
     let dateFormatterGet = DateFormatter()
@@ -99,7 +98,6 @@ class PeopleViewController: UIViewController {
                 print("error: \(error)")
             case .success(let data):
                 self.people += data.results
-                self.previousLink = data.previous ?? "null"
                 self.nextLink = data.next ?? "null"
             }
         }

@@ -20,13 +20,12 @@ class PlanetViewController: UIViewController {
         }
     }
     // Detecting if links have value to enable buttons to change value of planets array by calling the APIClient to fetch data from another URL
-    private var previousLink = String()
     private var nextLink = String()
     private let apiClient = StarWarsAPIClient()
     var player = AVAudioPlayer()
+    var tapPlayer = AVAudioPlayer()
     let dateFormatterGet = DateFormatter()
     let dateFormatterPrint = DateFormatter()
-    var tapPlayer = AVAudioPlayer()
     var playerPause = false
 
     override func viewDidLoad() {
@@ -57,11 +56,11 @@ class PlanetViewController: UIViewController {
     func PlaySound() {
         do {
             let audioPath = Bundle.main.path(forResource: "LightsaberSwing", ofType: "wav")
-            try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!) as URL)
+            try tapPlayer = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath!) as URL)
         } catch {
             print("Error !")
         }
-        player.play()
+        tapPlayer.play()
     }
     func addSongButton() {
         let play = UIBarButtonItem(title: "Pause", style: .plain, target: self, action: #selector(playTapped))
@@ -100,7 +99,6 @@ class PlanetViewController: UIViewController {
                 print("error: \(error)")
             case .success(let data):
                 self.planets += data.results
-                self.previousLink = data.previous ?? "null"
                 self.nextLink = data.next ?? "null"
             }
         }

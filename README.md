@@ -3,7 +3,7 @@
 A project using Star Wars API to display information about the people and planets from Star Wars. 
 The app contains two tabs for users to navigate between two different information. 
 The first tab contains information about the people including the name, hair color, eye color, date of birth and the creation date. 
-The second tab contains information about the planets Option to also turn the Star Wars Battle Theme background sound on and off while enabling a lightsaber audio when selecting something on the list.
+The second tab contains information about the planets Option to also turn the Star Wars Battle Theme background sound on and off while enabling lightsaber audio when selecting something on the list.
 
 ## Prerequisites
 * iOS 12+
